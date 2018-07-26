@@ -83,7 +83,7 @@ Quando a aplicação recebe a requisição e determina que a ação say é respo
 
 O parâmetro r na URL acima requer mais explicação. Ele significa rota, um ID abrangente e único de uma aplicação que se refere a uma ação. O formato da rota é IDdoController/IDdaAction. Quando a aplicação recebe uma requisição, ela verificará este parâmetro, usando a parte IDdoController para determinar qual classe de controlador deve ser instanciada para tratar a requisição. Então o controlador usará a parte IDdaAction para determinar qual ação deverá ser instanciada para fazer o trabalho. No caso deste exemplo, a rota site/say será resolvida como a classe de controlador SiteController e a ação say. Como resultado, o método SiteController::actionSay() será chamado para tratar a requisição.
 */
-    public function actionSay($message = 'Hello')
+    public function actionSay($message = 'Mesagem Padrão')
     {
         return $this->render('say', ['message' => $message]);
     }
@@ -97,7 +97,9 @@ Obs: A expressão Yii::$app representa a instância da aplicação, que é globa
     public function actionEntry()
     {
         $model = new EntryForm();
-
+/*
+Se você tiver um objeto EntryForm populado com dados fornecidos pelo usuário, você pode chamar o validate() para iniciar as rotinas de validação dos dados. A validação dos dados falhar, a propriedade hasErrors será definida como true e você pode saber quais erros ocorrerão pela validação através de errors.
+*/
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             // dados válidos recebidos pelo $model
 
