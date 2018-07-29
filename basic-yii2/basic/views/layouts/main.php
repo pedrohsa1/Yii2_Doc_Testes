@@ -66,7 +66,7 @@ AppAsset::register($this);
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= Alert::widget() ?>
-        <?= $content ?>
+        <?= $content ?> <!--AQUI VEM O CONTEUDO VINDO DO CONTROLADOR-->
     </div>
 </div>
 

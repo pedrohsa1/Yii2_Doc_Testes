@@ -13,10 +13,12 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="country-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
+
+    <?php //Descomentando essa linha abaixo temos campos de pesquisa para o search?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Country', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Inserir Country', ['country/create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

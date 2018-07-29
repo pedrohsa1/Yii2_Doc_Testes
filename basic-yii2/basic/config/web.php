@@ -12,11 +12,12 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
-    'components' => [ /*
+    'components' => [ /*São aplicações service locators. Elas hospedam um conjunto de assim chamados componentes de aplicação que fornecem diferentes serviços para o processamento de requisições
     */
         'request' => [
 // !!! inserir uma chave secreta no seguinte (se estiver vazia) - isso é requerido pela validação do cookie
             'cookieValidationKey' => 'chave_aprendendo_yii2',
+            //'enableCookieValidation' => false //caso não queira validar por coockie
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -59,6 +60,8 @@ $config = [
     'params' => $params,
 ];
 
+//Dependendo de como está setado o ambiente em "/basic/web/index.php"
+//Irá execultar esse bloco de codigo:
 if (YII_ENV_DEV) {
     // ajustes de configuração para o ambiente 'dev'
     $config['bootstrap'][] = 'debug';

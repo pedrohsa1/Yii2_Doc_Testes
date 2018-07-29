@@ -18,6 +18,48 @@ $this->title = 'My Yii Application';
         <div class="row">
             <div class="col-lg-12">
                 <hr>
+                <h3>Views (Visões)</h3>
+                <p>
+A mudança mais significante das views no Yii 2 é que a variável especial <strong>$this em uma view não se refere mais ao controller (controlador) ou widget atual. Ao invés disso, $this agora se refere a um objeto view</strong>, um novo conceito introduzido no 2.0. O objeto view é do tipo yii\web\View, que representa a parte da visão do padrão MVC. Se você quiser acessar o controlador (controller) ou o widget em uma visão, você pode utilizar $this->context.
+                </p>
+                <p>
+Para renderizar uma visão parcial (partial view) dentro de outra view, você usa $this->render(), e não $this->renderPartial(). Agora a chamada de render também precisa ser explicitamente imprimida com echo, uma vez que o métood render() retorna o resultado da renderização ao invés de exibi-lo diretamente. Por exemplo:</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <hr>
+                <h3>Controllers (Controladores)</h3>
+                <p>
+                    O impacto mais óbvio destas mudanças em seu código é que uma action de um controller deve sempre retornar o conteúdo que você quer renderizar ao invés de dar echo nele: 
+                </p>
+                <p>
+                    <code>
+                        public function actionView($id)
+                        {
+                            $model = \app\models\Post::findOne($id);
+                            if ($model) {
+                                return $this->render('view', ['model' => $model]);
+                            } else {
+                                throw new \yii\web\NotFoundHttpException;
+                            }
+                        }
+                    </code>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <hr>
+                <h3>Models (Modelos)</h3>
+                <p>
+                    O Yii 2.0 usa a yii\base\Model como modelo base, semelhante à CModel no 1.1. A classe CFormModel foi removida inteiramente. Ao invés dela, no Yii 2 você deve estender a classe yii\base\Model parar criar uma classe de modelo de formulário.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <hr>
                 <h3><strong style="color:blue">Exemplos da Documentação:</strong></h3>
             </div>
         </div>
@@ -102,7 +144,31 @@ $this->title = 'My Yii Application';
                 </ul>
             </div>
         </div>
-
+        <div class="row">
+            <div class="col-lg-12">
+                <strong style="color:red"> -> Trabalhando Formulario 2: </strong>
+                <ul>
+                    <li><strong>Forma de acesso:</strong> http://localhost/Yii2_Doc_Testes/basic-yii2/basic/web/index.php?r=formulario/formulario</li>
+                    <li><strong>Controller:</strong> FormularioController.php</li>
+                    <li><strong>Model:</strong> CadastroForm.php</li>
+                    <li><strong>Ação: </strong>formulario</li>
+                    <li><strong>Visão: </strong>formulario/formulario.php</li>
+                    <li><strong>Visão: </strong>formulario/formulario-confirmacao.php</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <strong style="color:red"> -> Trabalhando Paginação: </strong>
+                <ul>
+                    <li><strong>Forma de acesso:</strong> http://localhost/Yii2_Doc_Testes/basic-yii2/basic/web/index.php?r=formulario/pessoas</li>
+                    <li><strong>Controller:</strong> FormularioController.php</li>
+                    <li><strong>Model:</strong> Pessoas.php</li>
+                    <li><strong>Ação: </strong>pessoas</li>
+                    <li><strong>Visão: </strong>formulario/pessoas.php</li>
+                </ul>
+            </div>
+        </div>
 
         <hr>
         <div class="row">
