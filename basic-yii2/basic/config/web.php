@@ -2,18 +2,40 @@
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
-
 $config = [
-    'id' => 'basic',// ID único que diferencia uma aplicação das outras
-    'basePath' => dirname(__DIR__),//A propriedade basePath especifica o diretório raiz de um sistema.
-    'bootstrap' => ['log'],//Permite que você especifique um array de componentes que devem ser executados durante o processo de inicialização da aplicação.
+    // ID único que diferencia uma aplicação das outras
+    'id' => 'basic',
+
+    //A propriedade basePath especifica o diretório raiz de um sistema.
+    'basePath' => dirname(__DIR__),
+
+    //Permite que você especifique um array de componentes que devem ser executados durante o processo de inicialização da aplicação.
+    'bootstrap' => ['log'],
     /**/
-    'aliases' => [//Define o conjunto de aliases para as path sem precisar usar Yii::setAlias() 
+    //Define o conjunto de aliases para as path sem precisar usar Yii::setAlias()
+    'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
-    'components' => [ /*São aplicações service locators. Elas hospedam um conjunto de assim chamados componentes de aplicação que fornecem diferentes serviços para o processamento de requisições
+    'language' => 'pt',
+    'sourceLanguage' => 'pt-BR',
+    'timeZone' => 'America/Fortaleza',
+    'charset' => 'UTF-8',
+    //Todas as requisições que forem feitas será redirecinada para esta página
+    //Estamos temporariamente fora do ar, Estamos em manutenção...
+    /*'catchAll' => [
+        'site' => 'pagManutencao',
+        //'param1' => 'testando parametros',
+        //'param2' => 'testando parametros 2',
+    ],*/
+    /*São aplicações service locators. Elas hospedam um conjunto de assim chamados componentes de aplicação que
+    fornecem diferentes serviços para o processamento de requisições
     */
+    'components' => [
+        'testeMyComponent' => [
+            'class' => 'app\classes\componentes\MyComponent',
+            'string' => 'Yii2 Videos Academy Testando Componentes'
+        ],
         'request' => [
 // !!! inserir uma chave secreta no seguinte (se estiver vazia) - isso é requerido pela validação do cookie
             'cookieValidationKey' => 'chave_aprendendo_yii2',

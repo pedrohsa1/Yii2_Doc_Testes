@@ -18,6 +18,7 @@ class CountrySearch extends Country
     public function rules()
     {
         return [
+            [['code', 'name', 'population'], 'required'],
             [['code', 'name'], 'safe'],
             [['population'], 'integer'],
         ];

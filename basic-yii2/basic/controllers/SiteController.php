@@ -64,12 +64,17 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        /*$myComponent = Yii::$app->testeMyComponent;
+        $myComponent->printString();
+        die;*/
         return $this->render('index');
     }
 
 //##################### Método de teste ################################
 /*
-Quando a aplicação recebe a requisição e determina que a ação say é responsável por tratar a requisição, a aplicação alimentará este parâmetro com o parâmetro de mesmo nome encontrado na requisição. Em outras palavras, se a requisição inclui um parâmetro message com o valor "Goodbye", a variável $message na ação receberá esse valor.
+Quando a aplicação recebe a requisição e determina que a ação say é responsável por tratar a requisição, a aplicação
+alimentará este parâmetro com o parâmetro de mesmo nome encontrado na requisição. Em outras palavras, se a requisição
+inclui um parâmetro message com o valor "Goodbye", a variável $message na ação receberá esse valor.
 
     http://localhost/aprendendo_yii2/basic-yii2/basic/web/index.php?r=site/say&message=Envia+mensagem+nesse+parametro+da+action.
 
@@ -81,7 +86,12 @@ Quando a aplicação recebe a requisição e determina que a ação say é respo
 
     Resultado da requisição uma view com a mensagem: Envia mensagem nesse parametro da action.
 
-O parâmetro r na URL acima requer mais explicação. Ele significa rota, um ID abrangente e único de uma aplicação que se refere a uma ação. O formato da rota é IDdoController/IDdaAction. Quando a aplicação recebe uma requisição, ela verificará este parâmetro, usando a parte IDdoController para determinar qual classe de controlador deve ser instanciada para tratar a requisição. Então o controlador usará a parte IDdaAction para determinar qual ação deverá ser instanciada para fazer o trabalho. No caso deste exemplo, a rota site/say será resolvida como a classe de controlador SiteController e a ação say. Como resultado, o método SiteController::actionSay() será chamado para tratar a requisição.
+O parâmetro r na URL acima requer mais explicação. Ele significa rota, um ID abrangente e único de uma aplicação que se
+refere a uma ação. O formato da rota é IDdoController/IDdaAction. Quando a aplicação recebe uma requisição, ela verificará
+este parâmetro, usando a parte IDdoController para determinar qual classe de controlador deve ser instanciada para tratar a requisição.
+ Então o controlador usará a parte IDdaAction para determinar qual ação deverá ser instanciada para fazer o trabalho.
+No caso deste exemplo, a rota site/say será resolvida como a classe de controlador SiteController e a ação say.
+Como resultado, o método SiteController::actionSay() será chamado para tratar a requisição.
 */
     public function actionSay($message = 'Mesagem Padrão')
     {
@@ -89,16 +99,21 @@ O parâmetro r na URL acima requer mais explicação. Ele significa rota, um ID 
     }
 
 /*
-A primeira ação cria um objeto EntryForm. Ele, então, tenta popular o modelo (model) com os dados vindos do $_POST, fornecidos pelo yii\web\Request::post() no Yii. Se o modelo (model) for populado com sucesso (por exemplo, se o usuário enviar o formulário HTML), a ação chamará o validate() para certificar-se que os valores fornecidos são válidos.
+A primeira ação cria um objeto EntryForm. Ele, então, tenta popular o modelo (model) com os dados vindos do $_POST,
+fornecidos pelo yii\web\Request::post() no Yii. Se o modelo (model) for populado com sucesso (por exemplo, se o usuário
+ enviar o formulário HTML), a ação chamará o validate() para certificar-se que os valores fornecidos são válidos.
 
-Obs: A expressão Yii::$app representa a instância da aplicação, que é globalmente acessível via singleton. Também é um service locator que fornece componentes tais como request, response, db, etc...
+Obs: A expressão Yii::$app representa a instância da aplicação, que é globalmente acessível via singleton.
+ Também é um service locator que fornece componentes tais como request, response, db, etc...
 */
 
     public function actionEntry()
     {
         $model = new EntryForm();
 /*
-Se você tiver um objeto EntryForm populado com dados fornecidos pelo usuário, você pode chamar o validate() para iniciar as rotinas de validação dos dados. A validação dos dados falhar, a propriedade hasErrors será definida como true e você pode saber quais erros ocorrerão pela validação através de errors.
+Se você tiver um objeto EntryForm populado com dados fornecidos pelo usuário, você pode chamar o validate() para
+iniciar as rotinas de validação dos dados. A validação dos dados falhar, a propriedade hasErrors será definida como true
+ e você pode saber quais erros ocorrerão pela validação através de errors.
 */
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             // dados válidos recebidos pelo $model
