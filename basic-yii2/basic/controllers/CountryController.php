@@ -66,6 +66,8 @@ class CountryController extends Controller
     {
         $model = new Country();
 
+        var_dump( Yii::$app->request->post());die;
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->code]);
         }
